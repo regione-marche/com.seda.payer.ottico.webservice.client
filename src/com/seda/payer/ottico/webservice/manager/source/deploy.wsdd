@@ -1,0 +1,135 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ManagerService WSDL service -->
+
+  <service name="ManagerPort" provider="java:RPC" style="document" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://source.manager.webservice.ottico.payer.seda.com"/>
+      <parameter name="wsdlServiceElement" value="ManagerService"/>
+      <parameter name="schemaQualified" value="http://srv.manager.webservice.ottico.payer.seda.com,http://dati.manager.webservice.ottico.payer.seda.com"/>
+      <parameter name="schemaUnqualified" value="http://source.manager.webservice.ottico.payer.seda.com"/>
+      <parameter name="wsdlServicePort" value="ManagerPort"/>
+      <parameter name="className" value="com.seda.payer.ottico.webservice.manager.source.ManagerSOAPBindingImpl"/>
+      <parameter name="wsdlPortType" value="ManagerInterface"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="recuperaLogElabDettaglio" qname="recuperaLogElabDettaglio" returnQName="retNS:RecuperaLogElabDettaglioResponse" xmlns:retNS="http://dati.manager.webservice.ottico.payer.seda.com" returnType="rtns:>RecuperaLogElabDettaglioResponse" xmlns:rtns="http://dati.manager.webservice.ottico.payer.seda.com" soapAction="" >
+        <parameter qname="pns:RecuperaLogElabDettaglioRequest" xmlns:pns="http://dati.manager.webservice.ottico.payer.seda.com" type="tns:>RecuperaLogElabDettaglioRequest" xmlns:tns="http://dati.manager.webservice.ottico.payer.seda.com"/>
+        <fault name="ManagerFaultException" qname="fns:Fault" xmlns:fns="http://srv.manager.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.manager.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.manager.webservice.ottico.payer.seda.com"/>
+      </operation>
+      <operation name="recuperaLogElabRiepilogo" qname="recuperaLogElabRiepilogo" returnQName="retNS:RecuperaLogElabRiepilogoResponse" xmlns:retNS="http://dati.manager.webservice.ottico.payer.seda.com" returnType="rtns:>RecuperaLogElabRiepilogoResponse" xmlns:rtns="http://dati.manager.webservice.ottico.payer.seda.com" soapAction="" >
+        <parameter qname="pns:RecuperaLogElabRiepilogoRequest" xmlns:pns="http://dati.manager.webservice.ottico.payer.seda.com" type="tns:>RecuperaLogElabRiepilogoRequest" xmlns:tns="http://dati.manager.webservice.ottico.payer.seda.com"/>
+        <fault name="ManagerFaultException" qname="fns:Fault" xmlns:fns="http://srv.manager.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.manager.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.manager.webservice.ottico.payer.seda.com"/>
+      </operation>
+      <operation name="ricercaListaElabOttico" qname="ricercaListaElabOttico" returnQName="retNS:RicercaListaElabOtticoResponse" xmlns:retNS="http://dati.manager.webservice.ottico.payer.seda.com" returnType="rtns:>RicercaListaElabOtticoResponse" xmlns:rtns="http://dati.manager.webservice.ottico.payer.seda.com" soapAction="" >
+        <parameter qname="pns:RicercaListaElabOtticoRequest" xmlns:pns="http://dati.manager.webservice.ottico.payer.seda.com" type="tns:>RicercaListaElabOtticoRequest" xmlns:tns="http://dati.manager.webservice.ottico.payer.seda.com"/>
+        <fault name="ManagerFaultException" qname="fns:Fault" xmlns:fns="http://srv.manager.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.manager.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.manager.webservice.ottico.payer.seda.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="recuperaLogElabDettaglio ricercaListaElabOttico recuperaLogElabRiepilogo"/>
+
+      <typeMapping
+        xmlns:ns="http://dati.manager.webservice.ottico.payer.seda.com"
+        qname="ns:>RecuperaLogElabDettaglioResponse"
+        type="java:com.seda.payer.ottico.webservice.manager.dati.RecuperaLogElabDettaglioResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.manager.webservice.ottico.payer.seda.com"
+        qname="ns:>ResponseType>retCode"
+        type="java:com.seda.payer.ottico.webservice.manager.dati.ResponseTypeRetCode"
+        serializer="org.apache.axis.encoding.ser.EnumSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.EnumDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.manager.webservice.ottico.payer.seda.com"
+        qname="ns:>RecuperaLogElabRiepilogoRequest"
+        type="java:com.seda.payer.ottico.webservice.manager.dati.RecuperaLogElabRiepilogoRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.manager.webservice.ottico.payer.seda.com"
+        qname="ns:>RecuperaLogElabDettaglioRequest"
+        type="java:com.seda.payer.ottico.webservice.manager.dati.RecuperaLogElabDettaglioRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.manager.webservice.ottico.payer.seda.com"
+        qname="ns:>RecuperaLogElabRiepilogoResponse"
+        type="java:com.seda.payer.ottico.webservice.manager.dati.RecuperaLogElabRiepilogoResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.manager.webservice.ottico.payer.seda.com"
+        qname="ns:>RicercaListaElabOtticoRequest"
+        type="java:com.seda.payer.ottico.webservice.manager.dati.RicercaListaElabOtticoRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://srv.manager.webservice.ottico.payer.seda.com"
+        qname="ns:FaultType"
+        type="java:com.seda.payer.ottico.webservice.manager.srv.FaultType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.manager.webservice.ottico.payer.seda.com"
+        qname="ns:ResponseType"
+        type="java:com.seda.payer.ottico.webservice.manager.dati.ResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.manager.webservice.ottico.payer.seda.com"
+        qname="ns:>ListResponseType>pageInfo"
+        type="java:com.seda.payer.ottico.webservice.manager.dati.ListResponseTypePageInfo"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.manager.webservice.ottico.payer.seda.com"
+        qname="ns:ListResponseType"
+        type="java:com.seda.payer.ottico.webservice.manager.dati.ListResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.manager.webservice.ottico.payer.seda.com"
+        qname="ns:>ResponseType>retMessage"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.manager.webservice.ottico.payer.seda.com"
+        qname="ns:>RicercaListaElabOtticoResponse"
+        type="java:com.seda.payer.ottico.webservice.manager.dati.RicercaListaElabOtticoResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>
