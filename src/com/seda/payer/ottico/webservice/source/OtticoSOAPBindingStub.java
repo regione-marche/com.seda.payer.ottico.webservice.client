@@ -16,7 +16,7 @@ public class OtticoSOAPBindingStub extends org.apache.axis.client.Stub implement
     static org.apache.axis.description.OperationDesc [] _operations;
 
     static {
-        _operations = new org.apache.axis.description.OperationDesc[12];
+        _operations = new org.apache.axis.description.OperationDesc[13];
         _initOperationDesc1();
         _initOperationDesc2();
     }
@@ -233,6 +233,23 @@ public class OtticoSOAPBindingStub extends org.apache.axis.client.Stub implement
                      ));
         _operations[11] = oper;
 
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("stampaImmagineEsito");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://dati.webservice.ottico.payer.seda.com", "StampaImmagineEsitoRequest"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://dati.webservice.ottico.payer.seda.com", ">StampaImmagineEsitoRequest"), com.seda.payer.ottico.webservice.dati.StampaImmagineEsitoRequest.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://dati.webservice.ottico.payer.seda.com", ">StampaImmagineEsitoResponse"));
+        oper.setReturnClass(com.seda.payer.ottico.webservice.dati.StampaImmagineEsitoResponse.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://dati.webservice.ottico.payer.seda.com", "StampaImmagineEsitoResponse"));
+        oper.setStyle(org.apache.axis.constants.Style.DOCUMENT);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        oper.addFault(new org.apache.axis.description.FaultDesc(
+                      new javax.xml.namespace.QName("http://srv.webservice.ottico.payer.seda.com", "Fault"),
+                      "com.seda.payer.ottico.webservice.srv.FaultType",
+                      new javax.xml.namespace.QName("http://srv.webservice.ottico.payer.seda.com", "FaultType"), 
+                      true
+                     ));
+        _operations[12] = oper;
+
     }
 
     public OtticoSOAPBindingStub() throws org.apache.axis.AxisFault {
@@ -372,6 +389,20 @@ public class OtticoSOAPBindingStub extends org.apache.axis.client.Stub implement
             qName = new javax.xml.namespace.QName("http://dati.webservice.ottico.payer.seda.com", ">StampaImmagineContenziosoResponse");
             cachedSerQNames.add(qName);
             cls = com.seda.payer.ottico.webservice.dati.StampaImmagineContenziosoResponse.class;
+            cachedSerClasses.add(cls);
+            cachedSerFactories.add(beansf);
+            cachedDeserFactories.add(beandf);
+
+            qName = new javax.xml.namespace.QName("http://dati.webservice.ottico.payer.seda.com", ">StampaImmagineEsitoRequest");
+            cachedSerQNames.add(qName);
+            cls = com.seda.payer.ottico.webservice.dati.StampaImmagineEsitoRequest.class;
+            cachedSerClasses.add(cls);
+            cachedSerFactories.add(beansf);
+            cachedDeserFactories.add(beandf);
+
+            qName = new javax.xml.namespace.QName("http://dati.webservice.ottico.payer.seda.com", ">StampaImmagineEsitoResponse");
+            cachedSerQNames.add(qName);
+            cls = com.seda.payer.ottico.webservice.dati.StampaImmagineEsitoResponse.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
@@ -1015,6 +1046,48 @@ public class OtticoSOAPBindingStub extends org.apache.axis.client.Stub implement
                 return (com.seda.payer.ottico.webservice.dati.StampaImmagineResponse) _resp;
             } catch (java.lang.Exception _exception) {
                 return (com.seda.payer.ottico.webservice.dati.StampaImmagineResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.seda.payer.ottico.webservice.dati.StampaImmagineResponse.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+    if (axisFaultException.detail != null) {
+        if (axisFaultException.detail instanceof java.rmi.RemoteException) {
+              throw (java.rmi.RemoteException) axisFaultException.detail;
+         }
+        if (axisFaultException.detail instanceof com.seda.payer.ottico.webservice.srv.FaultType) {
+              throw (com.seda.payer.ottico.webservice.srv.FaultType) axisFaultException.detail;
+         }
+   }
+  throw axisFaultException;
+}
+    }
+
+    public com.seda.payer.ottico.webservice.dati.StampaImmagineEsitoResponse stampaImmagineEsito(com.seda.payer.ottico.webservice.dati.StampaImmagineEsitoRequest in) throws java.rmi.RemoteException, com.seda.payer.ottico.webservice.srv.FaultType {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[12]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("", "stampaImmagineEsito"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {in});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.seda.payer.ottico.webservice.dati.StampaImmagineEsitoResponse) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.seda.payer.ottico.webservice.dati.StampaImmagineEsitoResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.seda.payer.ottico.webservice.dati.StampaImmagineEsitoResponse.class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
