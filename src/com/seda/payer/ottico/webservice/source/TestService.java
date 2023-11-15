@@ -9,8 +9,6 @@ import java.util.GregorianCalendar;
 
 import javax.xml.rpc.ServiceException;
 
-import org.apache.log4j.Logger;
-
 import com.seda.payer.ottico.webservice.dati.LogElaborazioneFlussiImgRequest;
 import com.seda.payer.ottico.webservice.dati.LogElaborazioneFlussiImgResponse;
 import com.seda.payer.ottico.webservice.dati.RecuperaTemplateRequest;
@@ -22,7 +20,7 @@ import com.seda.payer.ottico.webservice.dati.VerificaFlussoResponse;
 
 public class TestService {
 
-	private Logger log = Logger.getLogger(TestService.class);
+	// private static final LoggerWrapper log =  CustomLoggerManager.get(TestService.class);
 	
 	public TestService(){
 

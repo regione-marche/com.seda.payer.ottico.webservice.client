@@ -1,18 +1,13 @@
 package com.seda.payer.ottico.webservice.configurazione.source;
 
-import java.io.File;
-import java.io.FilenameFilter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.rmi.RemoteException;
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import javax.xml.rpc.ServiceException;
-
-import org.apache.log4j.Logger;
 
 import com.seda.payer.ottico.webservice.configurazione.dati.CreaAssociaTemplateRequest;
 import com.seda.payer.ottico.webservice.configurazione.dati.CreaAssociaTemplateResponse;
@@ -34,13 +29,9 @@ import com.seda.payer.ottico.webservice.configurazione.dati.ModificaAssociaTempl
 import com.seda.payer.ottico.webservice.configurazione.dati.ModificaAssociaTemplateResponse;
 import com.seda.payer.ottico.webservice.configurazione.dati.ModificaParametriOtticoRequest;
 import com.seda.payer.ottico.webservice.configurazione.dati.ModificaParametriOtticoResponse;
-import com.seda.payer.ottico.webservice.configurazione.dati.VerificaAssociaTemplateRequest;
-import com.seda.payer.ottico.webservice.configurazione.dati.VerificaAssociaTemplateResponse;
 import com.seda.payer.ottico.webservice.configurazione.srv.FaultType;
 
 public class TestService_Configurazione {
-
-	private Logger log = Logger.getLogger(TestService_Configurazione.class);
 
 	public TestService_Configurazione(){
 
